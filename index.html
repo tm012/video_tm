@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  
+</div>
+  
+<div class="container">
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <label for="fname">Video Link</label>
+        <input type="text" id="fname" name="fname">
+        
+        <button type="button" id="video_btn" class="btn btn-primary">Add Link to The Video</button>
+
+        <br>
+        
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+    <br>
+  <div class="row">
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+      
+        
+        <video id="video_tag" controls="controls" > Sorry, your browser doesn't support HTML5 
+
+             <source id="video_src" src="" type="video/mp4">
+          
+
+                
+
+
+        </video>
+
+
+
+    </div>
+    <div class="col-sm-4"></div>
+
+  </div>
+</div>
+
+
+
+</body>
+
+
+<script>
+    $(function() {
+        $('#video_src').attr('src', "https://archive.org/download/Popeye_forPresident/Popeye_forPresident_512kb.mp4");
+        $('#video_tag')[0].load();
+    });
+
+    $('#video_btn').click(function(e){
+      const videoSource = $('#fname').val();
+      console.log(videoSource);
+      $('#video_src').attr('src', videoSource);
+      $('#video_tag')[0].load();
+      
+
+    })
+
+
+async function saveFile() 
+{
+    let formData = new FormData();           
+    formData.append("file", sortpicture.files[0]);
+    await fetch('/uploads', {method: "POST", body: formData});    
+    alert('works');
+}
+</script>
+</html>
